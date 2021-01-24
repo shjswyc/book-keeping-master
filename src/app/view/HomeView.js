@@ -1,15 +1,12 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Col, Row } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
+import CustomCard from '../ui/CustomCard'
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Content, Footer, Sider } = Layout;
 
 class HomeView extends React.Component {
   state = {
@@ -40,11 +37,23 @@ class HomeView extends React.Component {
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+              <Breadcrumb.Item>Ywang</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
+              <Row>
+                <Col span={6}>
+                  <CustomCard />
+                </Col>
+                <Col span={6}>
+                  <CustomCard />
+                </Col>
+                <Col span={6}>
+                  <CustomCard />
+                </Col>
+                <Col span={6}>
+                  <CustomCard />
+                </Col>
+              </Row>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Book-Keeping-Master @2021 Created by Yechen Wang</Footer>
