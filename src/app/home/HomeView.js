@@ -1,45 +1,55 @@
 import React from 'react';
-import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  FileOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 
+const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 class HomeView extends React.Component {
   state = {
-    current: 'mail',
+    collapsed: false,
   };
 
-  handleClick = e => {
-    console.log('click ', e);
-    this.setState({ current: e.key });
+  onCollapse = collapsed => {
+    console.log(collapsed);
+    this.setState({ collapsed });
   };
 
   render() {
-    const { current } = this.state;
+    const { collapsed } = this.state;
     return (
-      <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
-        <Menu.Item key="mail" icon={<MailOutlined />}>
-          Navigation One
-        </Menu.Item>
-        <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
-          Navigation Two
-        </Menu.Item>
-        <SubMenu key="SubMenu" icon={<SettingOutlined />} title="Navigation Three - Submenu">
-          <Menu.ItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
-          </Menu.ItemGroup>
-        </SubMenu>
-        <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-            Navigation Four - Link
-          </a>
-        </Menu.Item>
-      </Menu>
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+          <div className="logo" />
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu.Item key="1" icon={<PieChartOutlined />}>
+              User
+            </Menu.Item>
+            <Menu.Item key="2" icon={<DesktopOutlined />}>
+              Option
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout className="site-layout">
+          <Content style={{ margin: '0 16px' }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+              Bill is a cat.
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Book-Keeping-Master @2021 Created by Yechen Wang</Footer>
+        </Layout>
+      </Layout>
     );
   }
 }
