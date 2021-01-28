@@ -20,16 +20,18 @@ class SideBar extends React.Component {
   render() {
     const { collapsed } = this.state;
     return (
-      <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            User
+      <>
+        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu.Item key="1" icon={<PieChartOutlined />}>
+              User
             </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />} onClick={() => { alert("switch") }}>
-            Option
+            <Menu.Item key="2" icon={<DesktopOutlined />} onClick={() => { alert("switch") }}>
+              Option
             </Menu.Item>
-        </Menu>
-      </Sider>
+          </Menu>
+        </Sider>
+      </>
     );
   }
 }
